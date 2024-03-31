@@ -1,3 +1,4 @@
+from backend.models.announcement import Announcement
 from .permission import Permission
 from .user import User, UserIdentity
 
@@ -16,3 +17,4 @@ class UserDetails(User):
     """
 
     permissions: list["Permission"] = []
+    announcements: list["Announcement"]
