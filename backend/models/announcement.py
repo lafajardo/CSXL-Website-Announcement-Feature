@@ -2,8 +2,10 @@
 
 from pydantic import BaseModel
 from enum import Enum
+
+from backend.models.announcement_state import AnnouncementState
 from datetime import datetime
-from announcement import AnnouncementState
+
 from backend.models.user import User
 
 class Announcement(BaseModel):
@@ -21,8 +23,3 @@ class Announcement(BaseModel):
     modification_date : datetime
     user: User
 
-class AnnouncementState(Enum):
-    """Different Announcements States"""
-    PUBLISHED = 1
-    DRAFT = 2
-    ARCHIVED = 3
