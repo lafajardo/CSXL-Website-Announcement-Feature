@@ -1,6 +1,43 @@
-<p>announcement-fwaijpfpopage works!</p>
-
-<app-announcement-card
-  [announcement]="announcement"
-  *ngFor="let announcement of announcements" />
-
+<!-- Container provides padding and global setting-->
+<div class="container">
+  <!--  Announcement Grid Provides the left-right separation -->
+  <div class="announcements-grid">
+    <!-- first column -->
+    <div class="announcements-column">
+      <p style="font-size: 20px; margin: 20px 10px 10px 10px">
+        {{ announcements[0].publish_date | date: 'mediumDate' }}
+      </p>
+      <mat-divider class="list-announcement-group" />
+      <app-announcement-card
+        [announcement]="announcement"
+        *ngFor="let announcement of announcements" />
+    </div>
+    <!-- Second column -->
+    <div class="details-column">
+      <mat-card style="margin: 75px 20px 0px 0px">
+        <p
+          style="
+            font-size: 20px;
+            margin: 20px 10px 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            width:90%;
+          ">
+          <span>{{ announcements[0].headline }}</span>
+          <span>
+            {{ announcements[0].publish_date | date: 'mediumDate' }}
+          </span>
+        </p>
+        <mat-divider class="list-announcement-group" />
+        <p style="font-size: 18px; margin: 0px 10px 10px 20px">
+          From {{ announcements[0].author }}
+        </p>
+        <mat-divider class="list-announcement-group" />
+        <p style="font-size: 15px; margin: 0px 10px 10px 20px; word-wrap: break-word;">
+          {{ announcements[0].main_story }}
+        </p>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,23 @@
-<div Class="announcement-card">duh bruh ah</div>
+<!-- Event Card -->
+<mat-card
+  appearance="outlined"
+  class="announcement-card"
+  [routerLink]="'/announcements/' + announcement.id">
+  <!-- (click)="announcementCardClicked()" -->
+  <!-- Inner Columns -->
+  <div class="inner-column">
+    <div class="header-section">
+      <p class="announcement-name">{{ announcement.headline }}</p>
+      <p class="announcement-author">
+        {{ announcement.author }}
+      </p>
+    </div>
+    <div class="content-section">
+      <p class="announcement-shorthand">
+        <mat-card-content>
+          {{ announcement.synopsis }}
+        </mat-card-content>
+      </p>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,36 @@
+/* Adds Padding */
+.container {
+    padding-left: 24px;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+  
+  .announcements-grid {
+    display: grid;
+    grid-template-columns: auto 560px;
+    margin-top: 4px;
+    row-gap: 15px;
+    column-gap: 24px;
+    width: inherit;
+  }
+
+  .announcements-column {
+    position: sticky;
+    bottom: 24px;
+    top: 170px;
+    height: 73vh;
+  }
+  .details-column {
+    position: sticky;
+    right: 24px;
+    bottom: 24px;
+    top: 170px;
+    width: 548px;
+    height: 73vh;
+  }
+
+  .list-announcement-group {
+    padding-bottom: 8px;
+  }

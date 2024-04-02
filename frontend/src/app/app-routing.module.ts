@@ -44,7 +44,7 @@ const routes: Routes = [
       import('./event/event.module').then((m) => m.EventModule)
   },
   {
-    path: 'announcement',
+    path: 'announcements',
     title: 'Announcement',
     loadChildren: () =>
       import('./announcement/announcement.module').then(
