@@ -8,31 +8,48 @@
         {{ announcements[0].publish_date | date: 'mediumDate' }}
       </p>
       <mat-divider class="list-announcement-group" />
-      <app-announcement-card [announcement]="announcement" *ngFor="let announcement of announcements" />
+      <button
+        id="announcement-form"
+        class="button-card-style"
+        (click)="goToNewAnnouncement()">
+        Create New Announcement
+      </button>
+      <app-announcement-card
+        [announcement]="announcement"
+        *ngFor="let announcement of announcements" />
     </div>
     <!-- Second column -->
     <div class="details-column">
       <mat-card style="margin: 75px 20px 0px 0px">
-        <p style="
+        <p
+          style="
             font-size: 20px;
             margin: 20px 10px 10px 20px;
             display: flex;
             justify-content: space-between;
             font-weight: bold;
-            width:90%;
+            width: 90%;
           ">
-          <span>{{ announcements[0].headline }}</span>
+          <span>{{ announcements[this.detailDisplay].headline }}</span>
           <span>
-            {{ announcements[0].publish_date | date: 'mediumDate' }}
+            {{
+              announcements[this.detailDisplay].publish_date
+                | date: 'mediumDate'
+            }}
           </span>
         </p>
         <mat-divider class="list-announcement-group" />
         <p style="font-size: 18px; margin: 0px 10px 10px 20px">
-          From {{ announcements[0].author }}
+          From {{ announcements[this.detailDisplay].author }}
         </p>
         <mat-divider class="list-announcement-group" />
-        <p style="font-size: 15px; margin: 0px 10px 10px 20px; word-wrap: break-word;">
-          {{ announcements[0].main_story }}
+        <p
+          style="
+            font-size: 15px;
+            margin: 0px 10px 10px 20px;
+            word-wrap: break-word;
+          ">
+          {{ announcements[this.detailDisplay].main_story }}
         </p>
       </mat-card>
     </div>

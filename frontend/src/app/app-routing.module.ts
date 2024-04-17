@@ -5,6 +5,7 @@ import { GateComponent } from './gate/gate.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileEditorComponent } from './profile/profile-editor/profile-editor.component';
 import { AboutComponent } from './about/about.component';
+import { NewAnnouncementFormComponent } from './announcement/new-announcement-form/new-announcement-form.component';
 
 const routes: Routes = [
   HomeComponent.Route,
@@ -55,7 +56,8 @@ const routes: Routes = [
       import('./announcement/announcement.module').then(
         (m) => m.AnnouncementModule
       )
-  }
+  },
+  { path: 'new-announcement', component: NewAnnouncementFormComponent }
 ];
 
 @NgModule({

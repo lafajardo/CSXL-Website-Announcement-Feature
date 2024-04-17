@@ -1,37 +1,60 @@
 /* Adds Padding */
 .container {
-  padding-left: 24px;
-  -ms-overflow-style: none;
-  /* Internet Explorer 10+ */
-  scrollbar-width: none;
-  /* Firefox */
-}
+    padding-left: 24px;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+  
+  .announcements-grid {
+    display: grid;
+    grid-template-columns: auto 560px;
+    margin-top: 4px;
+    row-gap: 15px;
+    column-gap: 24px;
+    width: inherit;
+  }
 
-.announcements-grid {
-  display: grid;
-  grid-template-columns: auto 560px;
-  margin-top: 4px;
-  row-gap: 15px;
-  column-gap: 24px;
-  width: inherit;
-}
+  .announcements-column {
+    position: sticky;
+    bottom: 24px;
+    top: 170px;
+    height: 73vh;
+  }
+  .details-column {
+    position: sticky;
+    right: 24px;
+    bottom: 24px;
+    top: 170px;
+    width: 548px;
+    height: 73vh;
+  }
 
-.announcements-column {
-  position: sticky;
-  bottom: 24px;
-  top: 170px;
-  height: 73vh;
-}
+  .list-announcement-group {
+    padding-bottom: 8px;
+  }
 
-.details-column {
-  position: sticky;
-  right: 24px;
-  bottom: 24px;
-  top: 170px;
-  width: 548px;
-  height: 73vh;
-}
-
-.list-announcement-group {
-  padding-bottom: 8px;
-}
+  .button-card-style {
+    background-color: #4885C6; /* Adjust the color to match your card's background */
+    color: #FFFFFF; /* This is typically white, but adjust as needed */
+    padding: 16px 24px; /* Adjust to match the card's padding */
+    border: none; /* Assuming there's no border */
+    border-radius: 8px; /* Adjust to match the card's border-radius */
+    cursor: pointer; /* To indicate it's clickable */
+    text-align: center; /* Align the text as per your card's style */
+    transition: 0.3s; /* For a smooth hover effect */
+    width: 100%; /* To make the button full width */
+    font-weight: bold;
+    font-size: medium;
+  }
+  
+  .button-card-style:hover {
+    background-color: #164b84; /* Optional: hover effect */
+    cursor: default;
+  }
+  
+  /* To remove the default button styling */
+  .button-card-style:focus {
+    outline: none;
+  }

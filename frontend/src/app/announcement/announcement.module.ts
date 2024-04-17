@@ -17,6 +17,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { AnnouncementDetailComponent } from './announcement-detail/announcement-detail.component';
+import { NewAnnouncementFormComponent } from './new-announcement-form/new-announcement-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,12 @@ import { AnnouncementDetailComponent } from './announcement-detail/announcement-
     MatInputModule,
     MatPaginatorModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NewAnnouncementFormComponent,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class AnnouncementModule {}
