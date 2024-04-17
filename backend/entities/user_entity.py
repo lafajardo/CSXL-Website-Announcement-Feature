@@ -5,7 +5,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Self
 
 from backend.entities.academics.section_member_entity import SectionMemberEntity
-from backend.entities.announcement_entity import AnnouncementEntity
 from backend.models.academics.section_member import SectionMember
 from .entity_base import EntityBase
 from .user_role_table import user_role_table
@@ -63,7 +62,6 @@ class UserEntity(EntityBase):
     # Section relations that the user is a part of.
     sections: Mapped[list["SectionMemberEntity"]] = relationship(back_populates="user")
 
-    announcements: Mapped[list["AnnouncementEntity"]] = relationship(back_populates="user")
 
     @classmethod
     def from_model(cls, model: User) -> Self:

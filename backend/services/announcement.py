@@ -26,7 +26,7 @@ class AnnouncementService:
         self._session = session
 
     def getAnnouncements(self, subject: User) -> list[Announcement]:
-        announcements = self._session.query(AnnouncementEntity).where(AnnouncementEntity.user_id == subject.id).all()
+        announcements = self._session.query(AnnouncementEntity).all()
         models = [announcement.to_model() for announcement in announcements]
         return models
     

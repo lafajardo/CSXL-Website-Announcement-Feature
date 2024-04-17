@@ -19,14 +19,12 @@ class Announcement(BaseModel):
     main_story: str
 
     author: str #| public_user
-    organization: str | None | Organization
-    #organization_id: int | None
+    organization: str | None 
     state: AnnouncementState
     slug: str
     image_url: str
     publish_date: datetime
     modification_date : datetime
-    #user: User | None
 
 
 

@@ -8,15 +8,12 @@
         {{ announcements[0].publish_date | date: 'mediumDate' }}
       </p>
       <mat-divider class="list-announcement-group" />
-      <app-announcement-card
-        [announcement]="announcement"
-        *ngFor="let announcement of announcements" />
+      <app-announcement-card [announcement]="announcement" *ngFor="let announcement of announcements" />
     </div>
     <!-- Second column -->
     <div class="details-column">
       <mat-card style="margin: 75px 20px 0px 0px">
-        <p
-          style="
+        <p style="
             font-size: 20px;
             margin: 20px 10px 10px 20px;
             display: flex;

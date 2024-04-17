@@ -24,7 +24,6 @@ class AnnouncementEntity(EntityBase):
     __tablename__ = "announcements"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-
     headline: Mapped[str] = mapped_column(String, nullable=False, default = "")
     synopsis: Mapped[str] = mapped_column(String, nullable=False, default="")
     main_story: Mapped[str] = mapped_column(String, nullable=False, default="")
@@ -38,30 +37,20 @@ class AnnouncementEntity(EntityBase):
     publish_date: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     modification_date: Mapped[datetime] = mapped_column(DateTime, nullable=False)
 
-    # Foreign Key
-    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
-
-    # Relationship Fields
-    # organization: Mapped["OrganizationEntity"] = relationship(back_populates="announcements")
-
-    user: Mapped["UserEntity"] = relationship(back_populates="announcements")
-
     @classmethod
     def from_model(cls, subject: User, model: Announcement) -> Self:
         return cls(
-
             id=model.id,
             headline=model.headline,
             synopsis=model.synopsis,
             main_story=model.main_story,
             author=model.author,
+            organization=model.organization,
             state=model.state,
             slug=model.slug,
             image_url=model.image_url,
             publish_date=model.publish_date,
             modification_date=model.modification_date,
-            organization=model.organization,
-            user_id=subject.id,
         )
 
 
@@ -70,15 +59,14 @@ class AnnouncementEntity(EntityBase):
         return Announcement(
             id = self.id,
             headline = self.headline,
-
             synopsis = self.synopsis,
             main_story = self.main_story,
             author = self.author,
+            organization=self.organization,
             state = self.state,
             slug = self.slug,
             image_url = self.image_url,
             publish_date = self.publish_date,
             modification_date = self.modification_date,
-            organization = self.organization,
         )
 
