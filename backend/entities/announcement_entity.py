@@ -40,7 +40,6 @@ class AnnouncementEntity(EntityBase):
 
     # Foreign Key
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
-    #organization_id: Mapped[int] = mapped_column(ForeignKey("organization.id"))
 
     # Relationship Fields
     # organization: Mapped["OrganizationEntity"] = relationship(back_populates="announcements")
@@ -61,7 +60,6 @@ class AnnouncementEntity(EntityBase):
             image_url=model.image_url,
             publish_date=model.publish_date,
             modification_date=model.modification_date,
-            #organization_id=model.organization_id,
             organization=model.organization,
             user_id=subject.id,
         )
@@ -76,7 +74,6 @@ class AnnouncementEntity(EntityBase):
             synopsis = self.synopsis,
             main_story = self.main_story,
             author = self.author,
-            #organization_id = self.organization_id,
             state = self.state,
             slug = self.slug,
             image_url = self.image_url,
