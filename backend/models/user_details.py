@@ -17,4 +17,3 @@ class UserDetails(User):
     """
 
     permissions: list["Permission"] = []
-    announcements: list["Announcement"]
