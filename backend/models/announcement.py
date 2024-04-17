@@ -8,18 +8,25 @@ from datetime import datetime
 
 from backend.models.user import User
 
+#from backend.models.user import public_user
+from backend.models.organization import Organization
+
+
 class Announcement(BaseModel):
     id: int
     headline: str
     synopsis: str
     main_story: str
-    author: str
-    organization: str | None
-    organization_id: int | None
+
+    author: str #| public_user
+    organization: str | None | Organization
+    #organization_id: int | None
     state: AnnouncementState
     slug: str
-    image_url: list[str] = []
+    image_url: str
     publish_date: datetime
     modification_date : datetime
-    user: User
+    #user: User | None
+
+
 

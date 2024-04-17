@@ -3,7 +3,9 @@ The announcement Service allows the API to manipulate announcement data in the d
 """
 
 from fastapi import Depends
-from pytest import Session
+
+from sqlalchemy.orm import Session
+
 from backend.database import db_session
 from backend.entities.announcement_entity import AnnouncementEntity
 
@@ -40,7 +42,10 @@ class AnnouncementService:
     def createAnnouncement(self, subject: User, announcement: Announcement) -> Announcement:
         if announcement.id is not None:
             announcement.id = None
-        entity = self._session.add(AnnouncementEntity.from_model(subject, announcement))
+
+        entity = AnnouncementEntity.from_model(subject, announcement)
+        self._session.add(entity)
+
         self._session.commit()
         return entity.to_model()
     

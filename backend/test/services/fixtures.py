@@ -3,14 +3,23 @@
 import pytest
 from unittest.mock import create_autospec
 from sqlalchemy.orm import Session
-from ...services import (
-    PermissionService,
-    UserService,
-    RoleService,
-    OrganizationService,
-    EventService,
-    RoomService,
-)
+# from ...services import (
+#     PermissionService,
+#     UserService,
+#     RoleService,
+#     OrganizationService,
+#     EventService,
+#     RoomService,
+#     AnnouncementService
+# )
+
+from backend.services.permission import PermissionService
+from backend.services.user import UserService
+from backend.services.role import RoleService
+from backend.services.organization import OrganizationService
+from backend.services.event import EventService
+from backend.services.room import RoomService
+from backend.services.announcement import AnnouncementService
 
 __authors__ = ["Kris Jordan", "Ajay Gandecha"]
 __copyright__ = "Copyright 2023"
@@ -61,3 +70,8 @@ def event_svc_integration(session: Session, user_svc_integration: UserService):
 def room_svc(session: Session):
     """RoomService fixture."""
     return RoomService(session, PermissionService(session))
+
+@pytest.fixture()
+def announcement_svc_integration(session: Session):
+    """This fixture is used to test the AnnouncementService class with a real AnnouncementService."""
+    return AnnouncementService(session)
