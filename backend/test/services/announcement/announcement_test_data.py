@@ -15,12 +15,12 @@ from ..user_data import user
 
 announcement1 = Announcement(
     id=1,
-    headline="Headline1",
-    synopsis="synopsis1",
-    main_story="main_story1",
-    author="author1",
+    headline="Legit Announcement",
+    synopsis="Trust me Bro, I am id 1",
+    main_story="Whatsup! I am not a hacker, but id 1; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. ",
+    author="Putin",
     organization="organization1",
-    #organization_id=1,
+    # organization_id=1,
     state=AnnouncementState.PUBLISHED,
     slug="slug1",
     image_url="asdf",
@@ -29,12 +29,12 @@ announcement1 = Announcement(
 )
 announcement2 = Announcement(
     id=2,
-    headline="Headline2",
-    synopsis="synopsis2",
-    main_story="main_story2",
-    author="author2",
+    headline="Hacker Announcement",
+    synopsis="Whatsup! I am not a hacker, but the announcement with id 2; I dont want your cash; Just trust me bro.",
+    main_story="My main story is a secret. I am a hacker with id 2. I want your cash. Just trust me bro.",
+    author="Hecker",
     organization="organization2",
-    #organization_id=2,
+    # organization_id=2,
     state=AnnouncementState.PUBLISHED,
     slug="slug2",
     image_url="asdf",
@@ -43,14 +43,14 @@ announcement2 = Announcement(
 )
 announcement3 = Announcement(
     id=3,
-    headline="Headline3",
-    synopsis="synopsis3",
-    main_story="main_story3",
-    author="author3",
-    organization="organization3",
-    #organization_id=3,
+    headline="Legit Announcement",
+    synopsis="Trust me Bro, I am id 3",
+    main_story="Whatsup! I am not a hacker, but id 3; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. ",
+    author="Putin",
+    organization="organization1",
+    # organization_id=1,
     state=AnnouncementState.PUBLISHED,
-    slug="slug3",
+    slug="slug1",
     image_url="asdf",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
@@ -58,36 +58,21 @@ announcement3 = Announcement(
 
 announcement4 = Announcement(
     id=4,
-    headline="Headline4",
-    synopsis="synopsis4",
-    main_story="main_story34",
-    author="author4",
-    organization="organization4",
-    #organization_id=4,
+    headline="Hacker Announcement",
+    synopsis="Whatsup! I am not a hacker, but the announcement with id 4; I dont want your cash; Just trust me bro.",
+    main_story="My main story is a secret. I am a hacker with id 4. I want your cash. Just trust me bro.",
+    author="Hecker",
+    organization="organization2",
+    # organization_id=2,
     state=AnnouncementState.PUBLISHED,
-    slug="slug4",
-    image_url="asdf",
-    publish_date=datetime.datetime.now(),
-    modification_date=datetime.datetime.now(),
-)
-
-announcement5 = Announcement(
-    id=5,
-    headline="Headline5",
-    synopsis="synopsis5",
-    main_story="main_story5",
-    author="author5",
-    organization="organization5",
-    #organization_id=5,
-    state=AnnouncementState.PUBLISHED,
-    slug="slug5",
+    slug="slug2",
     image_url="asdf",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
 )
 
 
-announcements = [announcement1, announcement2, announcement3]
+announcements = [announcement1, announcement2, announcement3, announcement4]
 
 
 def insert_fake_data(session: Session):

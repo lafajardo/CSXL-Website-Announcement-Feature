@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./announcement-page.component.css']
 })
 export class AnnouncementPageComponent implements OnInit {
-  public announcements: AnnouncementModel[] = [];
+  public announcements!: AnnouncementModel[];
+  private dataSubscription: Subscription = new Subscription();
   public static idx: number = 0;
   public detailDisplay: number = 0;
 
@@ -24,7 +25,12 @@ export class AnnouncementPageComponent implements OnInit {
     this.announcementSubscription =
       this.announcementService.announcementClicked.subscribe((event) => {
         console.log('Event received:', event);
-        this.detailDisplay = event;
+        for (let i = 0; i < this.announcements.length; i++) {
+          if (this.announcements[i].id === event) {
+            this.detailDisplay = i;
+            break;
+          }
+        }
       });
   }
 
@@ -33,63 +39,17 @@ export class AnnouncementPageComponent implements OnInit {
     this.announcementSubscription.unsubscribe();
   }
 
-  public static giveAnnouncement(): AnnouncementModel {
-    const newConst: AnnouncementModel = {
-      id: AnnouncementPageComponent.idx,
-      headline: 'Legit Announcement',
-      synopsis: 'Trust me Bro',
-      main_story:
-        'Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. ',
-      author: 'Putin',
-      organization: null,
-      organization_id: 0,
-      state: AnnouncementState.PUBLISHED,
-      slug: 'a',
-      image_url: null,
-      publish_date: new Date(),
-      modification_date: new Date()
-    };
-    AnnouncementPageComponent.idx += 1;
-    return newConst;
-  }
-
-  public static giveAnnouncement2(): AnnouncementModel {
-    const newConst: AnnouncementModel = {
-      id: AnnouncementPageComponent.idx,
-      headline: 'Hacker Announcement',
-      synopsis:
-        'Whatsup! I am not a hacker; I dont want your cash; Just trust me bro. ',
-      main_story: 'a',
-      author: 'Hecker',
-      organization: null,
-      organization_id: 0,
-      state: AnnouncementState.PUBLISHED,
-      slug: 'a',
-      image_url: null,
-      publish_date: new Date(),
-      modification_date: new Date()
-    };
-    AnnouncementPageComponent.idx += 1;
-    return newConst;
-  }
-
   ngOnInit() {
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement());
-    this.announcements.push(AnnouncementPageComponent.giveAnnouncement2());
+    this.dataSubscription.add(
+      this.announcementService.getAnnouncements().subscribe(
+        (data) => {
+          this.announcements = data;
+        },
+        (error) => {
+          console.error('Failed to get announcements:', error);
+        }
+      )
+    );
   }
 
   public static Route = {

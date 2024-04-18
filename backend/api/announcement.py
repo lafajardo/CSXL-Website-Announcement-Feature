@@ -13,41 +13,46 @@ openapi_tags = {
     "description": "Create, update, delete, and retrieve Announcements.",
 }
 
-@api.get("", response_model= list[Announcement], tags = ["Announcement"])
+
+@api.get("", response_model=list[Announcement], tags=["Announcement"])
 def get_announcements(
-    subject:User = Depends(registered_user),
+    subject: User = Depends(registered_user),
     announcement_service: AnnouncementService = Depends(),
 ) -> list[Announcement]:
     return announcement_service.getAnnouncements(subject)
+
 
 @api.get("/{id}", response_model=Announcement, tags=["Announcement"])
 def get_announcement(
     id: int,
     subject: User = Depends(registered_user),
-    announcement_service: AnnouncementService = Depends()
+    announcement_service: AnnouncementService = Depends(),
 ) -> Announcement:
     return announcement_service.getAnnouncement(subject, id)
 
-@api.post("",response_model=Announcement, tags=["Announcement"])
+
+@api.post("", response_model=Announcement, tags=["Announcement"])
 def create_announcement(
     announcement: Announcement,
     subject: User = Depends(registered_user),
-    announcement_service: AnnouncementService = Depends()
+    announcement_service: AnnouncementService = Depends(),
 ) -> Announcement:
-    return announcement_service.createAnnouncement(subject,announcement)
+    return announcement_service.createAnnouncement(subject, announcement)
 
-@api.put("", response_model = Announcement, tags = ["Announcement"])
+
+@api.put("", response_model=Announcement, tags=["Announcement"])
 def update_announcement(
     announcement: Announcement,
     subject: User = Depends(registered_user),
-    announcement_service: AnnouncementService = Depends()
+    announcement_service: AnnouncementService = Depends(),
 ) -> Announcement:
     return announcement_service.updateAnnouncement(subject, announcement)
 
-@api.delete("/{id}", response_model=None, tags = ["Announcement"])
+
+@api.delete("/{id}", response_model=None, tags=["Announcement"])
 def delete_announcement(
     id: int,
     subject: User = Depends(registered_user),
-    announcement_service: AnnouncementService = Depends()
+    announcement_service: AnnouncementService = Depends(),
 ) -> Announcement:
     return announcement_service.deleteAnnouncement(subject, id)

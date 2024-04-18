@@ -6,12 +6,11 @@ export interface AnnouncementModel {
   headline: string;
   synopsis: string;
   main_story: string;
-  author: string | PublicProfile;
-  organization: string | Organization | null;
-  organization_id: number | null;
+  author: string;
+  organization: string | null;
   state: AnnouncementState;
   slug: string;
-  image_url: string[] | null;
+  image_url: string;
   publish_date: Date;
   modification_date: Date; // We may not need two dates
 }

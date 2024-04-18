@@ -24,7 +24,7 @@
           placeholder="Synopsis"
           required />
         <mat-error
-          *ngIf="announcementForm.get('headline')?.hasError('required')">
+          *ngIf="announcementForm.get('Synopsis')?.hasError('required')">
           Synopsis is required
         </mat-error>
       </mat-form-field>
@@ -33,8 +33,17 @@
         <mat-label>Main Story</mat-label>
         <textarea matInput formControlName="mainStory" required></textarea>
         <mat-error
-          *ngIf="announcementForm.get('headline')?.hasError('required')">
+          *ngIf="announcementForm.get('mainStory')?.hasError('required')">
           Main story is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>author</mat-label>
+        <textarea matInput formControlName="author" required></textarea>
+        <mat-error
+          *ngIf="announcementForm.get('author')?.hasError('required')">
+          Author is required
         </mat-error>
       </mat-form-field>
 
@@ -46,8 +55,26 @@
           placeholder="Organization"
           required />
         <mat-error
-          *ngIf="announcementForm.get('headline')?.hasError('required')">
+          *ngIf="announcementForm.get('organization')?.hasError('required')">
           Organization is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>slug</mat-label>
+        <textarea matInput formControlName="slug" required></textarea>
+        <mat-error
+          *ngIf="announcementForm.get('slug')?.hasError('required')">
+          Author is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>image_url</mat-label>
+        <textarea matInput formControlName="image_url" required></textarea>
+        <mat-error
+          *ngIf="announcementForm.get('image_url')?.hasError('required')">
+          Author is required
         </mat-error>
       </mat-form-field>
 
