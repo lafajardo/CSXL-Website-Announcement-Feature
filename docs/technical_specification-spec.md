@@ -81,3 +81,31 @@ The following API routes and their functions allowing us to support our features
 - fixtures: Creates a fixture for testing core services including announcement_svc_integration which is used to test the AnnouncementService class with a real AnnouncementService.
 
 ### Brief guide: Frontend
+
+/frontend/src/app/announcement
+
+- Directory containing the announcement module
+
+/frontend/src/app/announcement/announcement.model.ts
+
+- file defining the announcement model data structure
+
+/frontend/src/app/announcement/announcement-page
+
+- directory containing the main page of the announcement page
+
+/frontend/src/app/announcement/widget/announcement-card
+
+- widget containing each announcement card that contains a summary of the announcement
+
+/frontend/src/app/announcement/detail
+
+- detail page for each announcement
+
+/frontend/src/app/announcement/new-announcement-form
+
+- submission form that creates a new announcement
+
+/frontend/src/app/announcement/announcement.service.ts
+
+- announcement service that supplies data from the backend
