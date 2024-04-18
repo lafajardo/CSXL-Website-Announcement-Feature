@@ -15,6 +15,7 @@ export class AnnouncementPageComponent implements OnInit {
   private dataSubscription: Subscription = new Subscription();
   public static idx: number = 0;
   public detailDisplay: number = 0;
+  public detailIdx: number = 0;
 
   private announcementSubscription: Subscription;
 
@@ -25,6 +26,7 @@ export class AnnouncementPageComponent implements OnInit {
     this.announcementSubscription =
       this.announcementService.announcementClicked.subscribe((event) => {
         console.log('Event received:', event);
+        this.detailIdx = event;
         for (let i = 0; i < this.announcements.length; i++) {
           if (this.announcements[i].id === event) {
             this.detailDisplay = i;
@@ -40,16 +42,13 @@ export class AnnouncementPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSubscription.add(
-      this.announcementService.getAnnouncements().subscribe(
-        (data) => {
-          this.announcements = data;
-        },
-        (error) => {
-          console.error('Failed to get announcements:', error);
-        }
-      )
-    );
+    this.announcementService.announcements$.subscribe((data) => {
+      this.announcements = data;
+      if (this.announcements.length > 0) {
+        this.detailIdx = this.announcements[0].id;
+      }
+    });
+    this.announcementService.getAnnouncements();
   }
 
   public static Route = {
@@ -70,5 +69,19 @@ export class AnnouncementPageComponent implements OnInit {
 
   goToNewAnnouncement() {
     this.router.navigate(['/new-announcement']);
+  }
+
+  deleteAnnouncement() {
+    this.dataSubscription.add(
+      this.announcementService.deleteAnnouncement(this.detailIdx).subscribe(
+        (data) => {
+          console.log('success!');
+          this.announcementService.getAnnouncements();
+        },
+        (error) => {
+          console.error('Failed to get announcements:', error);
+        }
+      )
+    );
   }
 }

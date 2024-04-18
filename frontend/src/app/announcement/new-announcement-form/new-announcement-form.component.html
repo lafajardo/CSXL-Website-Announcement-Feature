@@ -82,7 +82,10 @@
       <div class="button-container">
         <button
           mat-raised-button
-          color="primary"
+          [ngClass]="{
+            'custom-button-disabled': announcementForm.invalid,
+            'custom-button-enabled': announcementForm.valid
+          }"
           type="submit"
           [disabled]="announcementForm.invalid">
           Add Announcement

@@ -11,7 +11,7 @@ export interface AnnouncementModel {
   state: AnnouncementState;
   slug: string;
   image_url: string;
-  publish_date: Date;
+  publish_date: Date | null;
   modification_date: Date; // We may not need two dates
 }
 

@@ -54,13 +54,13 @@ export class NewAnnouncementFormComponent {
       console.log('Form Data:', this.announcementForm.value);
 
       const announcement: AnnouncementModel = {
-        id: 5,
+        id: 100,
         headline: this.announcementForm!.value.headline as string,
         synopsis: this.announcementForm!.value.synopsis as string,
         main_story: this.announcementForm!.value.mainStory as string,
         author: this.announcementForm!.value.author as string,
         organization: this.announcementForm!.value.organization as string,
-        state: AnnouncementState.PUBLISHED, // Enum, when sent to backend, cannot be processed properly, must send number,
+        state: 0, // Enum, when sent to backend, cannot be processed properly, must send number,
         // probly use logic to handle
         slug: this.announcementForm!.value.slug as string,
         image_url: this.announcementForm!.value.image_url as string,

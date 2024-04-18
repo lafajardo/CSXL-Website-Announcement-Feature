@@ -2,13 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AnnouncementModel } from './announcement.model';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnnouncementService {
   announcementClicked = new EventEmitter<any>();
+  private announcementsSource = new BehaviorSubject<AnnouncementModel[]>([]);
+  announcements$: Observable<AnnouncementModel[]> =
+    this.announcementsSource.asObservable();
 
   constructor(
     protected http: HttpClient,
@@ -20,7 +23,10 @@ export class AnnouncementService {
   }
 
   getAnnouncements() {
-    return this.http.get<AnnouncementModel[]>('/api/announcement');
+    this.http.get<AnnouncementModel[]>('/api/announcement').subscribe(
+      (data) => this.announcementsSource.next(data),
+      (error) => console.error('Error fetching announcements', error)
+    );
   }
 
   createAnnouncement(
@@ -28,5 +34,9 @@ export class AnnouncementService {
   ): Observable<AnnouncementModel> {
     console.log('hey');
     return this.http.post<AnnouncementModel>('/api/announcement', announcement);
+  }
+
+  deleteAnnouncement(id: number) {
+    return this.http.delete(`/api/announcement/${id}`);
   }
 }

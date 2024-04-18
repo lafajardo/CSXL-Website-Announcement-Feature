@@ -1,57 +1,83 @@
-<!-- Container provides padding and global setting-->
-<div class="container">
-  <!--  Announcement Grid Provides the left-right separation -->
-  <div class="announcements-grid">
-    <!-- first column -->
-    <div class="announcements-column">
-      <p style="font-size: 20px; margin: 20px 10px 10px 10px">
-        {{ announcements[0].publish_date | date: 'mediumDate' }}
-      </p>
-      <mat-divider class="list-announcement-group" />
-      <button
-        id="announcement-form"
-        class="button-card-style"
-        (click)="goToNewAnnouncement()">
-        Create New Announcement
-      </button>
-      <app-announcement-card
-        [announcement]="announcement"
-        *ngFor="let announcement of announcements" />
-    </div>
-    <!-- Second column -->
-    <div class="details-column">
-      <mat-card style="margin: 75px 20px 0px 0px">
-        <p
-          style="
-            font-size: 20px;
-            margin: 20px 10px 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            width: 90%;
-          ">
-          <span>{{ announcements[this.detailDisplay].headline }}</span>
-          <span>
-            {{
-              announcements[this.detailDisplay].publish_date
-                | date: 'mediumDate'
-            }}
-          </span>
+<div *ngIf="announcements?.length === 0; else content">
+  No announcements to display.
+  <button
+  id="announcement-form"
+  class="button-card-style"
+  (click)="goToNewAnnouncement()">
+  Create New Announcement
+</button>
+<button
+style="margin: 5px 20px 0px 0px; width: 99%"
+id="delete-button"
+class="delete-button-card-style"
+(click)="deleteAnnouncement()">
+Delete Announcement
+</button>
+</div>
+
+<ng-template #content>
+  <!-- Container provides padding and global setting-->
+  <div class="container">
+    <!--  Announcement Grid Provides the left-right separation -->
+    <div class="announcements-grid">
+      <!-- first column -->
+      <div class="announcements-column">
+        <p style="font-size: 20px; margin: 20px 10px 10px 10px">
+          {{ announcements[0].publish_date | date: 'mediumDate' }}
         </p>
         <mat-divider class="list-announcement-group" />
-        <p style="font-size: 18px; margin: 0px 10px 10px 20px">
-          From {{ announcements[this.detailDisplay].author }}
-        </p>
-        <mat-divider class="list-announcement-group" />
-        <p
-          style="
-            font-size: 15px;
-            margin: 0px 10px 10px 20px;
-            word-wrap: break-word;
-          ">
-          {{ announcements[this.detailDisplay].main_story }}
-        </p>
-      </mat-card>
+        <button
+          id="announcement-form"
+          class="button-card-style"
+          (click)="goToNewAnnouncement()">
+          Create New Announcement
+        </button>
+        <app-announcement-card
+          [announcement]="announcement"
+          *ngFor="let announcement of announcements" />
+      </div>
+      <!-- Second column -->
+      <div class="details-column">
+        <mat-card style="margin: 65px 10px 0px 0px">
+          <p
+            style="
+              font-size: 20px;
+              margin: 20px 10px 10px 20px;
+              display: flex;
+              justify-content: space-between;
+              font-weight: bold;
+              width: 90%;
+            ">
+            <span>{{ announcements[this.detailDisplay].headline }}</span>
+            <span>
+              {{
+                announcements[this.detailDisplay].publish_date
+                  | date: 'mediumDate'
+              }}
+            </span>
+          </p>
+          <mat-divider class="list-announcement-group" />
+          <p style="font-size: 18px; margin: 0px 10px 10px 20px">
+            From {{ announcements[this.detailDisplay].author }}
+          </p>
+          <mat-divider class="list-announcement-group" />
+          <p
+            style="
+              font-size: 15px;
+              margin: 0px 10px 10px 20px;
+              word-wrap: break-word;
+            ">
+            {{ announcements[this.detailDisplay].main_story }}
+          </p>
+        </mat-card>
+        <button
+          style="margin: 5px 20px 0px 0px; width: 99%"
+          id="delete-button"
+          class="delete-button-card-style"
+          (click)="deleteAnnouncement()">
+          Delete Announcement
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>

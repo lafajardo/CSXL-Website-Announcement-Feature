@@ -37,7 +37,9 @@ mat-form-field {
   .button-container {
     display: flex;
     justify-content: space-between; /* This will place the buttons on opposite ends */
-    margin-top: 20px; /* Adds some space between the last field and the buttons */
+    margin-top: 20px;
+    color: blue /* Adds some space between the last field and the buttons */
+
   }
   
   /* If you want the buttons to be stacked vertically, change the flex-direction */
@@ -49,4 +51,30 @@ mat-form-field {
   .button-container button:not(:first-child) {
     margin-top: 10px;
   }
+  /* Disabled-like state */
+.custom-button-disabled {
+  background-color: blue; /* Replace with the grey color you want */
+  color: white; /* Text color */
+  /* You might need to add !important depending on your styling */
+}
+
+/* Enabled state */
+.custom-button-enabled {
+  background-color: blue; /* Replace with the blue color you want */
+  color: white; /* Text color */
+  /* You might need to add !important depending on your styling */
+}
+
+.mat-form-field-appearance-fill.mat-focused .mat-form-field-ripple,
+.mat-form-field-appearance-fill.mat-focused .mat-form-field-outline-thick {
+  color: blue !important; /* Change 'blue' to whatever color you'd like */
+  border-color: blue !important;
+}
+
+/* Additionally, if you want to change the color of the label text when focused */
+.mat-form-field-appearance-fill.mat-focused .mat-form-field-label {
+  color: blue !important;
+}
+
+
   

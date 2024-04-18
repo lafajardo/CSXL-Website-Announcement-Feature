@@ -19,7 +19,7 @@ class Announcement(BaseModel):
     main_story: str
 
     author: str  # | public_user
-    organization: str | None
+    organization: str
     state: AnnouncementState
     slug: str
     image_url: str
