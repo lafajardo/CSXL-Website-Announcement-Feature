@@ -91,4 +91,6 @@ export class AnnouncementPageComponent implements OnInit {
       )
     );
   }
+
+  editAnnouncement() {}
 }

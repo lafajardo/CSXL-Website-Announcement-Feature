@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { AnnouncementModel } from '../../announcement.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AnnouncementService } from '../../announcement.service';
 
 @Component({

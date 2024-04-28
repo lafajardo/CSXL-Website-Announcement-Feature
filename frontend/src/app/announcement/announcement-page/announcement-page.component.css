@@ -93,3 +93,27 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .edit-button-card-style {
+    background-color: #9b9b9b; /* Adjust the color to match your card's background */
+    color: #FFFFFF; /* This is typically white, but adjust as needed */
+    padding: 16px 24px; /* Adjust to match the card's padding */
+    border: none; /* Assuming there's no border */
+    border-radius: 8px; /* Adjust to match the card's border-radius */
+    cursor: pointer; /* To indicate it's clickable */
+    text-align: center; /* Align the text as per your card's style */
+    transition: 0.3s; /* For a smooth hover effect */
+    width: 100%; /* To make the button full width */
+    font-weight: bold;
+    font-size: medium;
+  }
+  
+  .edit-button-card-style:hover {
+    background-color: #6f6f6f; /* Optional: hover effect */
+    cursor: default;
+  }
+  
+  /* To remove the default button styling */
+  .edit-button-card-style:focus {
+    outline: none;
+  }

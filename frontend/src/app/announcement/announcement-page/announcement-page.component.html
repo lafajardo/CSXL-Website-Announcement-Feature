@@ -87,6 +87,13 @@
         <button
           *ngIf="this.adminPermission$ | async"
           style="margin: 5px 20px 0px 0px; width: 99%"
+          id="edit-button"
+          class="edit-button-card-style"
+          (click)="editAnnouncement()">
+          Edit Announcement
+        </button>
+        <button
+          style="margin: 5px 20px 0px 0px; width: 99%"
           id="delete-button"
           class="delete-button-card-style"
           (click)="deleteAnnouncement()">
