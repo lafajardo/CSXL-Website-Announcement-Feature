@@ -23,7 +23,7 @@ announcement1 = Announcement(
     # organization_id=1,
     state=AnnouncementState.PUBLISHED,
     slug="slug1",
-    image_url="asdf",
+    image_url="https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit4/Images/MW_Spitzer_sm.jpg",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
 )
@@ -37,7 +37,7 @@ announcement2 = Announcement(
     # organization_id=2,
     state=AnnouncementState.PUBLISHED,
     slug="slug2",
-    image_url="asdf",
+    image_url="https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit4/Images/MW_Spitzer_sm.jpg",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
 )
@@ -51,7 +51,7 @@ announcement3 = Announcement(
     # organization_id=1,
     state=AnnouncementState.PUBLISHED,
     slug="slug1",
-    image_url="asdf",
+    image_url="https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit4/Images/MW_Spitzer_sm.jpg",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
 )
@@ -66,7 +66,7 @@ announcement4 = Announcement(
     # organization_id=2,
     state=AnnouncementState.PUBLISHED,
     slug="slug2",
-    image_url="asdf",
+    image_url="https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit4/Images/MW_Spitzer_sm.jpg",
     publish_date=datetime.datetime.now(),
     modification_date=datetime.datetime.now(),
 )
