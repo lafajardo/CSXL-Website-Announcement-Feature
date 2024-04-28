@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementModel, AnnouncementState } from '../announcement.model';
 import { AnnouncementCardComponent } from '../widget/announcement-card/announcement-card.component';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AnnouncementService } from '../announcement.service';
 import { Router } from '@angular/router';
+import { PermissionService } from 'src/app/permission.service';
 
 @Component({
   selector: 'app-announcement-page',
@@ -16,12 +17,14 @@ export class AnnouncementPageComponent implements OnInit {
   public static idx: number = 0;
   public detailDisplay: number = 0;
   public detailIdx: number = 0;
+  adminPermission$!: Observable<boolean>;
 
   private announcementSubscription: Subscription;
 
   constructor(
     private announcementService: AnnouncementService,
-    private router: Router
+    private router: Router,
+    private permission: PermissionService
   ) {
     this.announcementSubscription =
       this.announcementService.announcementClicked.subscribe((event) => {
@@ -42,6 +45,10 @@ export class AnnouncementPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.adminPermission$ = this.permission.check(
+      'organization.announcements.*',
+      `organization/${this.announcementService}`
+    );
     this.announcementService.announcements$.subscribe((data) => {
       this.announcements = data;
       if (this.announcements.length > 0) {

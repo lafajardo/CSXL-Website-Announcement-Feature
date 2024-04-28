@@ -14,48 +14,70 @@ from backend.services.exceptions import (
     ResourceNotFoundException,
     UserPermissionException,
 )
+from backend.services.user import UserService
 from ..models.announcement import Announcement
+from .permission import PermissionService
+
 
 class AnnouncementService:
     """Backend service that enables direct modification of announcement data"""
+
     def __init__(
         self,
         session: Session = Depends(db_session),
+        permission: PermissionService = Depends(),
+        user_svc: UserService = Depends(),
     ):
         """Initializes the `EventService` session"""
         self._session = session
+        self._permission = permission
+        self._user_svc = user_svc
 
     def getAnnouncements(self, subject: User) -> list[Announcement]:
         announcements = self._session.query(AnnouncementEntity).all()
         models = [announcement.to_model() for announcement in announcements]
         return models
-    
+
     def getAnnouncement(self, subject: User, announcement_id: int) -> Announcement:
         announcement = self._session.get(AnnouncementEntity, announcement_id)
         if announcement == None:
-            raise(ResourceNotFoundException)
+            raise (ResourceNotFoundException)
         model = announcement.to_model()
         # if subject.id != announcement.user_id:
         #     raise(UserPermissionException("announcement.view", f"announcements/{announcement_id}"))
         return model
-    
-    def createAnnouncement(self, subject: User, announcement: Announcement) -> Announcement:
+
+    def createAnnouncement(
+        self, subject: User, announcement: Announcement
+    ) -> Announcement:
         if announcement.id is not None:
             announcement.id = None
+
+        self._permission.enforce(
+            subject,
+            "announcement.createAnnouncement",
+            "announcement/new-announcement",
+        )
 
         entity = AnnouncementEntity.from_model(subject, announcement)
         self._session.add(entity)
 
         self._session.commit()
         return entity.to_model()
-    
-    def updateAnnouncement(self, subject: User, announcement: Announcement) -> Announcement:
+
+    def updateAnnouncement(
+        self, subject: User, announcement: Announcement
+    ) -> Announcement:
         announcementEntity = self._session.get(AnnouncementEntity, announcement.id)
         if announcementEntity == None:
-            raise(ResourceNotFoundException)
-        # if announcementEntity.user_id != subject.id:
-        #     raise(UserPermissionException("announcement.view", f"announcements/{announcement.id}"))
-        
+            raise (ResourceNotFoundException)
+
+        self._permission.enforce(
+            subject,
+            "announcement.update",
+            f"announcement/{announcement.id}",
+        )
+
         announcementEntity.headline = announcement.headline
         announcementEntity.synopsis = announcement.synopsis
         announcementEntity.main_story = announcement.main_story
@@ -68,13 +90,18 @@ class AnnouncementService:
         announcementEntity.modification_date = announcement.modification_date
         self._session.commit()
         return announcementEntity.to_model()
-    
-    def deleteAnnouncement(self, subject: User, announcement_id: int) ->None:
-        entity = self._session.get(AnnouncementEntity,announcement_id)
+
+    def deleteAnnouncement(self, subject: User, announcement_id: int) -> None:
+        entity = self._session.get(AnnouncementEntity, announcement_id)
         if entity is None:
-            raise(ResourceNotFoundException)
+            raise (ResourceNotFoundException)
+
+        self._permission.enforce(
+            subject,
+            "announcement.delete",
+            f"announcement/{announcement_id}",
+        )
         # if announcementEntity.user_id != subject.id:
         #     raise(UserPermissionException("announcement.view", f"announcements/{announcement.id}"))
         self._session.delete(entity)
         self._session.commit()
-

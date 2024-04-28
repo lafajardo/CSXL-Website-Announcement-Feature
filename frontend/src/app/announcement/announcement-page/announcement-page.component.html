@@ -1,18 +1,18 @@
 <div *ngIf="announcements?.length === 0; else content">
   No announcements to display.
   <button
-  id="announcement-form"
-  class="button-card-style"
-  (click)="goToNewAnnouncement()">
-  Create New Announcement
-</button>
-<button
-style="margin: 5px 20px 0px 0px; width: 99%"
-id="delete-button"
-class="delete-button-card-style"
-(click)="deleteAnnouncement()">
-Delete Announcement
-</button>
+    id="announcement-form"
+    class="button-card-style"
+    (click)="goToNewAnnouncement()">
+    Create New Announcement
+  </button>
+  <button
+    style="margin: 5px 20px 0px 0px; width: 99%"
+    id="delete-button"
+    class="delete-button-card-style"
+    (click)="deleteAnnouncement()">
+    Delete Announcement
+  </button>
 </div>
 
 <ng-template #content>
@@ -27,6 +27,7 @@ Delete Announcement
         </p>
         <mat-divider class="list-announcement-group" />
         <button
+          *ngIf="this.adminPermission$ | async"
           id="announcement-form"
           class="button-card-style"
           (click)="goToNewAnnouncement()">
@@ -55,12 +56,18 @@ Delete Announcement
                   | date: 'mediumDate'
               }}
             </span>
-            
           </p>
           <mat-divider class="list-announcement-group" />
-          <img [src]="announcements[this.detailDisplay].image_url" class="resized-image centered-image">
+          <img
+            [src]="announcements[this.detailDisplay].image_url"
+            class="resized-image centered-image" />
           <mat-divider class="list-announcement-group" />
-          <p style="font-size: 18px; margin: 0px 10px 10px 20px; font-weight: 500">
+          <p
+            style="
+              font-size: 18px;
+              margin: 0px 10px 10px 20px;
+              font-weight: 500;
+            ">
             Organization: {{ announcements[this.detailDisplay].organization }}
           </p>
           <p style="font-size: 18px; margin: 0px 10px 10px 20px">
@@ -76,9 +83,9 @@ Delete Announcement
             {{ announcements[this.detailDisplay].main_story }}
           </p>
           <mat-divider class="list-announcement-goup" />
-          
         </mat-card>
         <button
+          *ngIf="this.adminPermission$ | async"
           style="margin: 5px 20px 0px 0px; width: 99%"
           id="delete-button"
           class="delete-button-card-style"
