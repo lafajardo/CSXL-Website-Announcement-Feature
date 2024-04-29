@@ -19,12 +19,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { AnnouncementDetailComponent } from './announcement-detail/announcement-detail.component';
 import { NewAnnouncementFormComponent } from './new-announcement-form/new-announcement-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AnnouncementFilterPipe } from './announcement-filter/announcement-filter.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     AnnouncementPageComponent,
     AnnouncementCardComponent,
-    AnnouncementDetailComponent
+    AnnouncementDetailComponent,
+    AnnouncementFilterPipe
   ],
 
   imports: [
@@ -47,7 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewAnnouncementFormComponent,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ]
 })
 export class AnnouncementModule {}

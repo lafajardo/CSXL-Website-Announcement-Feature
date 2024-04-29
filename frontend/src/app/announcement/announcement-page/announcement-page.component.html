@@ -1,3 +1,4 @@
+<search-bar [(searchBarQuery)]="searchBarQuery" />
 <div *ngIf="announcements?.length === 0; else content">
   No announcements to display.
   <button
@@ -20,6 +21,7 @@
   <div class="container">
     <!--  Announcement Grid Provides the left-right separation -->
     <div class="announcements-grid">
+      
       <!-- first column -->
       <div class="announcements-column">
         <p style="font-size: 20px; margin: 20px 10px 10px 10px">
@@ -35,7 +37,7 @@
         </button>
         <app-announcement-card
           [announcement]="announcement"
-          *ngFor="let announcement of announcements" />
+          *ngFor="let announcement of announcements | announcementFilter: searchBarQuery" />
       </div>
       <!-- Second column -->
       <div class="details-column">

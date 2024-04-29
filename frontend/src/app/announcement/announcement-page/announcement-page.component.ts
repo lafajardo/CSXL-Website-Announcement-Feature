@@ -20,6 +20,7 @@ export class AnnouncementPageComponent implements OnInit {
   adminPermission$!: Observable<boolean>;
 
   private announcementSubscription: Subscription;
+  public searchBarQuery = '';
 
   constructor(
     private announcementService: AnnouncementService,
