@@ -93,5 +93,7 @@ export class AnnouncementPageComponent implements OnInit {
     );
   }
 
-  editAnnouncement() {}
+  editAnnouncement(id: number): void {
+    this.router.navigate(['/edit-announcement', id]);
+  }
 }

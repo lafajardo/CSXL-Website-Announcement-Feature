@@ -104,7 +104,7 @@ The following API routes and their functions allowing us to support our features
 
 /frontend/src/app/announcement/new-announcement-form
 
-- submission form that creates a new announcement
+- submission form that allows for creating, deleting, and updating announcements
 
 /frontend/src/app/announcement/announcement.service.ts
 

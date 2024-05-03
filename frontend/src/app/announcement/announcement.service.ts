@@ -36,7 +36,21 @@ export class AnnouncementService {
     return this.http.post<AnnouncementModel>('/api/announcement', announcement);
   }
 
+  updateAnnouncement(
+    id: number,
+    announcement: AnnouncementModel
+  ): Observable<any> {
+    return this.http.put<AnnouncementModel>(
+      `/api/announcement/${id}`,
+      announcement
+    );
+  }
+
   deleteAnnouncement(id: number) {
     return this.http.delete(`/api/announcement/${id}`);
+  }
+
+  getAnnouncementById(id: number): Observable<AnnouncementModel> {
+    return this.http.get<AnnouncementModel>(`/api/announcement/${id}`);
   }
 }

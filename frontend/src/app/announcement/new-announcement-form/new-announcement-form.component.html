@@ -31,9 +31,9 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Main Story</mat-label>
-        <textarea matInput formControlName="mainStory" required></textarea>
+        <textarea matInput formControlName="main_story" required></textarea>
         <mat-error
-          *ngIf="announcementForm.get('mainStory')?.hasError('required')">
+          *ngIf="announcementForm.get('main_story')?.hasError('required')">
           Main story is required
         </mat-error>
       </mat-form-field>
@@ -41,8 +41,7 @@
       <mat-form-field appearance="fill">
         <mat-label>author</mat-label>
         <textarea matInput formControlName="author" required></textarea>
-        <mat-error
-          *ngIf="announcementForm.get('author')?.hasError('required')">
+        <mat-error *ngIf="announcementForm.get('author')?.hasError('required')">
           Author is required
         </mat-error>
       </mat-form-field>
@@ -63,8 +62,7 @@
       <mat-form-field appearance="fill">
         <mat-label>slug</mat-label>
         <textarea matInput formControlName="slug" required></textarea>
-        <mat-error
-          *ngIf="announcementForm.get('slug')?.hasError('required')">
+        <mat-error *ngIf="announcementForm.get('slug')?.hasError('required')">
           Author is required
         </mat-error>
       </mat-form-field>

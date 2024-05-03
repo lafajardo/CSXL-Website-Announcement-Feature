@@ -2,12 +2,14 @@
 <div *ngIf="announcements?.length === 0; else content">
   No announcements to display.
   <button
+    *ngIf="this.adminPermission$ | async"
     id="announcement-form"
     class="button-card-style"
     (click)="goToNewAnnouncement()">
     Create New Announcement
   </button>
   <button
+    *ngIf="this.adminPermission$ | async"
     style="margin: 5px 20px 0px 0px; width: 99%"
     id="delete-button"
     class="delete-button-card-style"
@@ -21,7 +23,6 @@
   <div class="container">
     <!--  Announcement Grid Provides the left-right separation -->
     <div class="announcements-grid">
-      
       <!-- first column -->
       <div class="announcements-column">
         <p style="font-size: 20px; margin: 20px 10px 10px 10px">
@@ -37,7 +38,10 @@
         </button>
         <app-announcement-card
           [announcement]="announcement"
-          *ngFor="let announcement of announcements | announcementFilter: searchBarQuery" />
+          *ngFor="
+            let announcement of announcements
+              | announcementFilter: searchBarQuery
+          " />
       </div>
       <!-- Second column -->
       <div class="details-column">
@@ -91,10 +95,11 @@
           style="margin: 5px 20px 0px 0px; width: 99%"
           id="edit-button"
           class="edit-button-card-style"
-          (click)="editAnnouncement()">
+          (click)="editAnnouncement(detailIdx)">
           Edit Announcement
         </button>
         <button
+          *ngIf="this.adminPermission$ | async"
           style="margin: 5px 20px 0px 0px; width: 99%"
           id="delete-button"
           class="delete-button-card-style"

@@ -57,7 +57,8 @@ const routes: Routes = [
         (m) => m.AnnouncementModule
       )
   },
-  { path: 'new-announcement', component: NewAnnouncementFormComponent }
+  { path: 'new-announcement', component: NewAnnouncementFormComponent },
+  { path: 'edit-announcement/:id', component: NewAnnouncementFormComponent }
 ];
 
 @NgModule({

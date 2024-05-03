@@ -66,9 +66,9 @@ class AnnouncementService:
         return entity.to_model()
 
     def updateAnnouncement(
-        self, subject: User, announcement: Announcement
+        self, subject: User, announcement: Announcement, announcement_id: int
     ) -> Announcement:
-        announcementEntity = self._session.get(AnnouncementEntity, announcement.id)
+        announcementEntity = self._session.get(AnnouncementEntity, announcement_id)
         if announcementEntity == None:
             raise (ResourceNotFoundException)
 

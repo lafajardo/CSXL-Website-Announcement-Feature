@@ -40,13 +40,14 @@ def create_announcement(
     return announcement_service.createAnnouncement(subject, announcement)
 
 
-@api.put("", response_model=Announcement, tags=["Announcement"])
+@api.put("/{id}", response_model=Announcement, tags=["Announcement"])
 def update_announcement(
+    id: int,
     announcement: Announcement,
     subject: User = Depends(registered_user),
     announcement_service: AnnouncementService = Depends(),
 ) -> Announcement:
-    return announcement_service.updateAnnouncement(subject, announcement)
+    return announcement_service.updateAnnouncement(subject, announcement, id)
 
 
 @api.delete("/{id}", response_model=None, tags=["Announcement"])

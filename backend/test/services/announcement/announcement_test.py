@@ -21,7 +21,6 @@ from backend.test.services.core_data import setup_insert_data_fixture
 # Data Models for Fake Data Inserted in Setup
 from backend.test.services.announcement.announcement_test_data import (
     announcement4,
-    announcement5,
     announcements,
 )
 from backend.test.services.user_data import user, root
@@ -78,6 +77,7 @@ def test_get_anouncement(announcement_svc_integration: AnnouncementService):
 
 def test_update_announcement(announcement_svc_integration: AnnouncementService):
     """Test that updating an announcement properly edits the fields"""
+    # announcement_svc_integration.createAnnouncement(user, announcement4)
     new_annoucement = announcements[0]
     new_annoucement.headline = "Headline edit"
     new_annoucement.synopsis = "synopsis edit"
@@ -85,7 +85,7 @@ def test_update_announcement(announcement_svc_integration: AnnouncementService):
     new_annoucement.organization = "organization edit"
 
     updated_announcement = announcement_svc_integration.updateAnnouncement(
-        user, new_annoucement
+        user, new_annoucement, new_annoucement.id
     )
     assert updated_announcement.headline == "Headline edit"
     assert updated_announcement.synopsis == "synopsis edit"
